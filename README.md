@@ -70,6 +70,8 @@ foo(1,2,(err, res)=>{
 
 ## Getting Started
 
+This library **uses and depends on es6**, so keep that in mind. There are no package dependencies.
+
 ### npm : 
 
 **note: the default file in the package uses CommonJS (require style, mainly for node), if you need ES6 Module version (try this if in doubt) or .mjs or IIFE (var name is callback\_bender) please import or use files from lib folder!**
@@ -84,7 +86,7 @@ npm i callback-bender
 <bend.callback_type.return_count>
 
 example: bend.cp.multiple(...)
-		 bend.efc.none(...)
+         bend.efc.none(...)
 ```
 
 **note:** CP is aliased as normal e.g. bend.normal.none(...) , EFC is aliased as node e.g. bend.node.none(...)
@@ -120,11 +122,11 @@ Normally we would use this function as follows:
 
 ```
 ugly((err, res)=>{ 
-	if(err){ 
-	handleError(err);
-	} else{
-	doSomething(res);
-	}
+    if(err){ 
+    handleError(err);
+    } else{
+    doSomething(res);
+    }
  });
 ```
 
@@ -186,12 +188,12 @@ Normally we would use this function as follows:
 
 ```
 ugly((err, res1, res2)=>{ 
-	if(err){ 
-	handleError(err);
-	} else{
-	doSomething(res1);
-	doStuff(res2);
-	}
+    if(err){ 
+    handleError(err);
+    } else{
+    doSomething(res1);
+    doStuff(res2);
+    }
  });
 ```
 
@@ -228,3 +230,13 @@ handleError(err);
 // promise style
 bend.efc.multiple(ugly,['first','second'])().then(obj => { doSomething(obj.first); doStuff(obj.second); }).catch(err => { handleError(err); };
 ```
+
+## **License**
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## **Contact**
+
+Antonio Ramirez: [email](mailto:sepehralizade@live.com)
+
+Project Link: [Github](https://github.com/antoniormrzz/callback-bender)
