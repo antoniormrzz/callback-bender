@@ -12,7 +12,7 @@ When working with NodeJS, you will encounter many Node API functions that work w
 
 ## Why Callback Bender?
 
-*   Uses standard, friendly syntax
+*   Uses standard, friendly syntax `const wrapped = bend.efc.single(fs.readdir);`
 *   Supports both **Continuation Passing callbacks** (normal) and **Error-First callbacks** (**EFC** or **node** style)
 *   Supports wrapping callbacks that accept multiple/single/no argument(s)
 *   Is pretty small
@@ -87,6 +87,8 @@ npm i callback-bender
 
 example: bend.cp.multiple(...)
          bend.efc.none(...)
+         
+example: const wrapped = bend.efc.single(fs.readdir);
 ```
 
 **note:** CP is aliased as normal e.g. bend.normal.none(...) , EFC is aliased as node e.g. bend.node.none(...)
@@ -231,12 +233,31 @@ handleError(err);
 bend.efc.multiple(ugly,['first','second'])().then(obj => { doSomething(obj.first); doStuff(obj.second); }).catch(err => { handleError(err); };
 ```
 
+### A NodeJS fs example:
+
+```
+fs.readdir(path.join(...), (err, files) => {
+            if(err){
+            ...
+            }else{
+            ...
+            }
+          });
+```
+
+We are using an **EFC** (usual for node), and we are getting **one argument** (files) so:
+
+```
+const wrapped = bend.efc.single(fs.readdir);
+wrapped(path.join(...)).then(res => ... ).catch(err => ... );
+```
+
 ## **License**
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## **Contact**
 
-Antonio Ramirez: [email](mailto:sepehralizade@live.com)
+Antonio Ramirez: [sepehralizade@live.com](mailto:sepehralizade@live.com)
 
 Project Link: [Github](https://github.com/antoniormrzz/callback-bender)
