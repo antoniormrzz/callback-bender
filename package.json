@@ -1,0 +1,29 @@
+{
+  "name": "callback-bender",
+  "version": "1.0.0",
+  "description": "A utility package for converting different kinds of javascript callbacks into various promise types.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniormrzz/callback-bender.git"
+  },
+  "keywords": [
+    "callback",
+    "efc",
+    "promise",
+    "convert"
+  ],
+  "author": "Antonio Ramirez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antoniormrzz/callback-bender/issues"
+  },
+  "homepage": "https://github.com/antoniormrzz/callback-bender#readme",
+  "devDependencies": {
+    "jest": "^26.6.0"
+  },
+  "types": "./index.d.ts"
+}
