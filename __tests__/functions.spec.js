@@ -126,8 +126,11 @@ describe('Converters', () => {
   });
 
   test('should convert cp with no return', done => {
-    c
-
+    const cpfunction1 = (a,b,c,cp) => {
+      setTimeout(() => {
+        cp();
+      }, 100);
+    };
     return bend.cp
       .none(cpfunction1)(1, 2, 3)
       .then(() => {

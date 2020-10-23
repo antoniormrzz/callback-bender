@@ -1,6 +1,6 @@
 {
   "name": "callback-bender",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A utility package for converting different kinds of javascript callbacks into various promise types.",
   "main": "index.js",
   "scripts": {

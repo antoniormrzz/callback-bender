@@ -2,15 +2,7 @@ function wrap_EFC(func: Function) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push(error => {
-          if (error) {
-            rej(error);
-          } else {
-            res();
-          }
-        });
-        func(...params);
+        func(...args, error => (error ? rej(error) : res()));
       } catch (err) {
         rej(err);
       }
@@ -21,11 +13,7 @@ function wrap_CP(func: Function) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push(() => {
-          res();
-        });
-        func(...params);
+        func(...args, () => res());
       } catch (err) {
         rej(err);
       }
@@ -36,15 +24,7 @@ function wrap_EFC_single(func: Function) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push((error, data) => {
-          if (error) {
-            rej(error);
-          } else {
-            res(data);
-          }
-        });
-        func(...params);
+        func(...args, (error, data) => (error ? rej(error) : res(data)));
       } catch (err) {
         rej(err);
       }
@@ -55,23 +35,18 @@ function wrap_CP_single(func: Function) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push(data => {
-          res(data);
-        });
-        func(...params);
+        func(...args, data => res(data));
       } catch (err) {
         rej(err);
       }
     });
 }
 
-function wrap_EFC_multiple(func: Function, names = []) {
+function wrap_EFC_multiple(func: Function, names: string[] = []) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push((error, ...data) => {
+        func(...args, (error, ...data) => {
           if (error) {
             rej(error);
           } else {
@@ -82,26 +57,23 @@ function wrap_EFC_multiple(func: Function, names = []) {
             res(resultObj);
           }
         });
-        func(...params);
       } catch (err) {
         rej(err);
       }
     });
 }
 
-function wrap_CP_multiple(func: Function, names = []) {
+function wrap_CP_multiple(func: Function, names: string[] = []) {
   return (...args) =>
     new Promise((res, rej) => {
       try {
-        let params = args ? [...args] : [];
-        params.push((...data) => {
+        func(...args, (...data) => {
           let resultObj = {};
           data.forEach((d, i) => {
             resultObj[i > names.length - 1 ? i + 1 : names[i]] = d;
           });
           res(resultObj);
         });
-        func(...params);
       } catch (err) {
         rej(err);
       }
