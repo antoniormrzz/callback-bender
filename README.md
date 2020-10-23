@@ -6,18 +6,20 @@ A utility package for converting different kinds of javascript callbacks into va
 
 Working with javascript can be frustrating for many reasons, one of them is the callback hell. In addition to callbacks making code uglier and longer, they also make it hard to work with promises or async/await. The goal of this project is to provide wrapper functions that transform these functions into functions that return native promises.
 
-## Most Common Use Cases
+## Most Common Use Cases For Callback Converters
 
-When working with NodeJS, you will encounter many Node API functions that work with callbacks. for example, many if not all functions in the 'fs' module use EFC style callbacks. You can easily wrap these functions to return promises.
+When working with NodeJS, you will encounter many Node API functions that work with callbacks. for example, many if not all functions in the 'fs' module use EFC style callbacks. Though there is a utility package for converting them, the utility package is part of nodejs and not available on other platforms. On the other hand, a lot of the examples online do not use the promisified syntax.
 
 ## Why Callback Bender?
 
 *   Uses standard, friendly syntax `const wrapped = bend.efc.single(fs.readdir);`
+*   Unified syntax across all your projects
 *   Supports both **Continuation Passing callbacks** (normal) and **Error-First callbacks** (**EFC** or **node** style)
 *   Supports wrapping callbacks that accept multiple/single/no argument(s)
-*   Is pretty small
-*   Provides many module formats (lib folder)
-*   Provides types and a typescript version (lib folder)
+*   Is pretty small (3KB even before minification)
+*   Provides many module formats (.mjs, es6, IIFE or script tag, all in the lib folder)
+*   Provides type definitions
+*   Provides typescript version (lib folder)
 *   Is tested and passing all tests
 
 ## Callback Types
@@ -87,7 +89,7 @@ npm i callback-bender
 
 example: bend.cp.multiple(...)
          bend.efc.none(...)
-         
+
 example: const wrapped = bend.efc.single(fs.readdir);
 ```
 
