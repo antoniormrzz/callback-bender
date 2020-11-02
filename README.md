@@ -1,6 +1,6 @@
 # callback-bender
 [![npm version](https://badge.fury.io/js/callback-bender.svg)](https://badge.fury.io/js/callback-bender)
-<span class="badge-patreon"><a href="https://patreon.com/antoniormrzz" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
+<span class="badge-patreon"><a href="https://patreon.com/antoniormrzz" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span> <br/>
 A utility package for converting different kinds of javascript callbacks into various promise types. You can wrap functions that work with callbacks into functions that return promises and can be used with async/await. If this does help you, please consider making a tiny donation [here.](https://www.patreon.com/bePatron?u=44856855) 🤝
 
 ## About Project
